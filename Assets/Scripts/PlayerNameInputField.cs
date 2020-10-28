@@ -14,14 +14,8 @@ namespace Com.ZachCarpenter.PhotonTutorial
     [RequireComponent(typeof(InputField))]
     public class PlayerNameInputField : MonoBehaviour
     {
-        #region Private Constants
-
         //Store the PlayerPref Key to avoid typos
         const string playerNamePrefKey = "PlayerName";
-
-        #endregion
-
-        #region Monobehaviour CallBacks
 
         ///<summary>
         ///Monobehaviour method called on GameObject by Unity during inititalization phase.
@@ -43,10 +37,6 @@ namespace Com.ZachCarpenter.PhotonTutorial
             PhotonNetwork.NickName = defaultName;
         }
 
-        #endregion
-
-        #region Public Methods
-
         ///<summary>
         ///Sets the name of the player, and save it in the PlayerPrefs for future sessions.
         /// </summary>
@@ -64,6 +54,5 @@ namespace Com.ZachCarpenter.PhotonTutorial
             PlayerPrefs.SetString(playerNamePrefKey, value);
         }
 
-        #endregion
     }
 }

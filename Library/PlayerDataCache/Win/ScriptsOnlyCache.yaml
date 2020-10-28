@@ -2,12 +2,11 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Com.ZachCarpenter.PhotonTutorial.CameraWork
-    - Com.ZachCarpenter.PhotonTutorial.GameManager
-    - Com.ZachCarpenter.PhotonTutorial.Launcher
     - Com.ZachCarpenter.PhotonTutorial.PlayerAnimationManager
     - Com.ZachCarpenter.PhotonTutorial.PlayerManager
-    - Com.ZachCarpenter.PhotonTutorial.PlayerNameInputField
     - Com.ZachCarpenter.PhotonTutorial.PlayerUI
+    - PhotonLobby
+    - RoomButton
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -49,8 +48,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
+    - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/Launcher.unity:
+    Assets/Scenes/MainMenu.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -108,8 +108,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12530}
     - Class: 114
-      Script: {instanceID: 12610}
-    - Class: 114
       Script: {instanceID: 12616}
     - Class: 114
       Script: {instanceID: 12692}
@@ -121,6 +119,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12936}
     - Class: 114
       Script: {instanceID: 13152}
+    - Class: 114
+      Script: {instanceID: 13220}
     - Class: 114
       Script: {instanceID: 13232}
     - Class: 114
@@ -146,7 +146,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14228}
     - Class: 114
-      Script: {instanceID: 14300}
+      Script: {instanceID: 22452}
+    - Class: 114
+      Script: {instanceID: 22460}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -166,362 +168,6 @@ ScriptsOnlyBuild:
     - Class: 198
       Script: {instanceID: 0}
     - Class: 199
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 225
-      Script: {instanceID: 0}
-    Assets/Scenes/Room for 1.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 65
-      Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 90
-      Script: {instanceID: 0}
-    - Class: 91
-      Script: {instanceID: 0}
-    - Class: 95
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 11714}
-    - Class: 114
-      Script: {instanceID: 11716}
-    - Class: 114
-      Script: {instanceID: 11720}
-    - Class: 114
-      Script: {instanceID: 11746}
-    - Class: 114
-      Script: {instanceID: 11926}
-    - Class: 114
-      Script: {instanceID: 12010}
-    - Class: 114
-      Script: {instanceID: 12246}
-    - Class: 114
-      Script: {instanceID: 12386}
-    - Class: 114
-      Script: {instanceID: 12530}
-    - Class: 114
-      Script: {instanceID: 12692}
-    - Class: 114
-      Script: {instanceID: 12816}
-    - Class: 114
-      Script: {instanceID: 12936}
-    - Class: 114
-      Script: {instanceID: 13724}
-    - Class: 114
-      Script: {instanceID: 14096}
-    - Class: 114
-      Script: {instanceID: 14182}
-    - Class: 114
-      Script: {instanceID: 14192}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 137
-      Script: {instanceID: 0}
-    - Class: 143
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 225
-      Script: {instanceID: 0}
-    Assets/Scenes/Room for 2.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 65
-      Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 90
-      Script: {instanceID: 0}
-    - Class: 91
-      Script: {instanceID: 0}
-    - Class: 95
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 11714}
-    - Class: 114
-      Script: {instanceID: 11716}
-    - Class: 114
-      Script: {instanceID: 11720}
-    - Class: 114
-      Script: {instanceID: 11746}
-    - Class: 114
-      Script: {instanceID: 11926}
-    - Class: 114
-      Script: {instanceID: 12010}
-    - Class: 114
-      Script: {instanceID: 12246}
-    - Class: 114
-      Script: {instanceID: 12386}
-    - Class: 114
-      Script: {instanceID: 12530}
-    - Class: 114
-      Script: {instanceID: 12692}
-    - Class: 114
-      Script: {instanceID: 12816}
-    - Class: 114
-      Script: {instanceID: 12936}
-    - Class: 114
-      Script: {instanceID: 13724}
-    - Class: 114
-      Script: {instanceID: 14096}
-    - Class: 114
-      Script: {instanceID: 14182}
-    - Class: 114
-      Script: {instanceID: 14192}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 137
-      Script: {instanceID: 0}
-    - Class: 143
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 225
-      Script: {instanceID: 0}
-    Assets/Scenes/Room for 3.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 65
-      Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 90
-      Script: {instanceID: 0}
-    - Class: 91
-      Script: {instanceID: 0}
-    - Class: 95
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 11714}
-    - Class: 114
-      Script: {instanceID: 11716}
-    - Class: 114
-      Script: {instanceID: 11720}
-    - Class: 114
-      Script: {instanceID: 11746}
-    - Class: 114
-      Script: {instanceID: 11926}
-    - Class: 114
-      Script: {instanceID: 12010}
-    - Class: 114
-      Script: {instanceID: 12246}
-    - Class: 114
-      Script: {instanceID: 12386}
-    - Class: 114
-      Script: {instanceID: 12530}
-    - Class: 114
-      Script: {instanceID: 12692}
-    - Class: 114
-      Script: {instanceID: 12816}
-    - Class: 114
-      Script: {instanceID: 12936}
-    - Class: 114
-      Script: {instanceID: 13724}
-    - Class: 114
-      Script: {instanceID: 14096}
-    - Class: 114
-      Script: {instanceID: 14182}
-    - Class: 114
-      Script: {instanceID: 14192}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 137
-      Script: {instanceID: 0}
-    - Class: 143
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    - Class: 225
-      Script: {instanceID: 0}
-    Assets/Scenes/Room for 4.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 65
-      Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 90
-      Script: {instanceID: 0}
-    - Class: 91
-      Script: {instanceID: 0}
-    - Class: 95
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 11714}
-    - Class: 114
-      Script: {instanceID: 11716}
-    - Class: 114
-      Script: {instanceID: 11720}
-    - Class: 114
-      Script: {instanceID: 11746}
-    - Class: 114
-      Script: {instanceID: 11926}
-    - Class: 114
-      Script: {instanceID: 12010}
-    - Class: 114
-      Script: {instanceID: 12246}
-    - Class: 114
-      Script: {instanceID: 12386}
-    - Class: 114
-      Script: {instanceID: 12530}
-    - Class: 114
-      Script: {instanceID: 12692}
-    - Class: 114
-      Script: {instanceID: 12816}
-    - Class: 114
-      Script: {instanceID: 12936}
-    - Class: 114
-      Script: {instanceID: 13724}
-    - Class: 114
-      Script: {instanceID: 14096}
-    - Class: 114
-      Script: {instanceID: 14182}
-    - Class: 114
-      Script: {instanceID: 14192}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 137
-      Script: {instanceID: 0}
-    - Class: 143
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -1878,11 +1524,19 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: Com.ZachCarpenter.PhotonTutorial
     className: PlayerNameInputField
+  - hash:
+      serializedVersion: 2
+      Hash: 54fec6ce60efffc0016366dad4abce89
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PhotonLobby
+  - hash:
+      serializedVersion: 2
+      Hash: 4b10256a53fa82d19f80d86716d6782b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RoomButton
   platform: 5
   scenePathNames:
-  - Assets/Scenes/Launcher.unity
-  - Assets/Scenes/Room for 1.unity
-  - Assets/Scenes/Room for 2.unity
-  - Assets/Scenes/Room for 3.unity
-  - Assets/Scenes/Room for 4.unity
+  - Assets/Scenes/MainMenu.unity
   playerPath: C:/Users/zacar/Desktop/PhotonTutorialBuilds/PhotonTutorial.exe
