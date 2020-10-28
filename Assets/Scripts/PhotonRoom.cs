@@ -121,6 +121,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         if (!PhotonNetwork.IsMasterClient)
             return;
         PhotonNetwork.LoadLevel("GameSpace");
+        //PhotonNetwork.CurrentRoom.IsOpen = false;
+        //PhotonNetwork.CurrentRoom.IsVisible = true;
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
