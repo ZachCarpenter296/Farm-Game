@@ -120,7 +120,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         if (!PhotonNetwork.IsMasterClient)
             return;
-        PhotonNetwork.LoadLevel("GameSpace");
+        //PhotonNetwork.LoadLevel("GameSpace");
+        PhotonNetwork.LoadLevel("TheFarm");
         //PhotonNetwork.CurrentRoom.IsOpen = false;
         //PhotonNetwork.CurrentRoom.IsVisible = true;
     }
