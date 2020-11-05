@@ -41,6 +41,7 @@ public class FarmerController : MonoBehaviour
         Jump();
     }
 
+    //Controls for the farmers camera
     void Look()
     {
         transform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X") * mouseSensitivity);
@@ -52,6 +53,7 @@ public class FarmerController : MonoBehaviour
 
     }
 
+    //Controls for the farmers movement
     void Move()
     {
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
@@ -59,6 +61,7 @@ public class FarmerController : MonoBehaviour
         moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
     }
 
+    //Controls for the farmers jumping
     void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
@@ -67,6 +70,7 @@ public class FarmerController : MonoBehaviour
         }
     }
 
+    //Bool to see if the farmer is grounded, if yes, then can jump
     public void SetGroundedState(bool _grounded)
     {
         grounded = _grounded;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerGroundCheck : MonoBehaviour
 {
+    /// <summary>
+    /// This script checks to see if the farmer is touching the ground. If he is, then he can jump, otherwise he cannot jump
+    /// </summary>
     FarmerController farmerController;
 
     private void Awake()

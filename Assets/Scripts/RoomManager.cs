@@ -4,11 +4,16 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using System.IO;
+using Photon.Realtime;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static RoomManager Instance;
-    private GameObject farmerPrefab;
+    GameObject go;
+    //private GameObject farmerPrefab;
+    [SerializeField]
+    public List<string> availableCharacters;
+    public List<string> characters;
 
     private void Awake()
     {
@@ -19,6 +24,17 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
         DontDestroyOnLoad(gameObject);
         Instance = this;
+
+        characters = new List<string>();
+        characters[0] = "PlayerManager";
+        characters[1] = "BlackChickenManager";
+        characters[2] = "BrownChickenManager";
+        characters[3] = "WhiteChickenManager";
+        characters[4] = "GooseManager";
+        characters[5] = "TurkeyManager";
+
+        availableCharacters = new List<string>();
+        availableCharacters = characters;
     }
 
     public override void OnEnable()
@@ -35,19 +51,24 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if(scene.buildIndex == 1) //We're in the game
+        if (scene.buildIndex == 1) //We're in the game
         {
-            PhotonNetwork.Instantiate("PlayerManager", Vector3.zero, Quaternion.identity);
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                int i = Random.Range(0, availableCharacters.Count);
+                PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
+                availableCharacters[i].Remove(i);
+            }
         }
     }
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        
+
     }
 }
