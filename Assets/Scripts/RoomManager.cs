@@ -5,13 +5,12 @@ using Photon.Pun;
 using UnityEngine.SceneManagement;
 using System.IO;
 using Photon.Realtime;
+using System.Linq;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     public static RoomManager Instance;
-    GameObject go;
     //private GameObject farmerPrefab;
-    [SerializeField]
     public List<string> availableCharacters;
     public List<string> characters;
 
@@ -26,12 +25,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
         Instance = this;
 
         characters = new List<string>();
-        characters[0] = "PlayerManager";
-        characters[1] = "BlackChickenManager";
-        characters[2] = "BrownChickenManager";
-        characters[3] = "WhiteChickenManager";
-        characters[4] = "GooseManager";
-        characters[5] = "TurkeyManager";
+        characters.Add("PlayerManager");
+        characters.Add("BlackChickenManager");
+        characters.Add("BrownChickenManager");
+        characters.Add("WhiteChickenManager");
+        characters.Add("GooseManager");
+        characters.Add("TurkeyManager");
 
         availableCharacters = new List<string>();
         availableCharacters = characters;
@@ -55,7 +54,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                int i = Random.Range(0, availableCharacters.Count);
+                int i = Random.Range(0, availableCharacters.Count - 1);
+                Debug.Log("Radnom index" + i);
                 PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
                 availableCharacters[i].Remove(i);
             }

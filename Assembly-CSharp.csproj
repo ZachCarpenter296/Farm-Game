@@ -59,11 +59,15 @@
     <Compile Include="Assets\Scripts\PhotonLobby.cs" />
     <Compile Include="Assets\Scripts\FarmerManager.cs" />
     <Compile Include="Assets\Scripts\FarmerController.cs" />
+    <Compile Include="Assets\Scripts\BlackChickenManager.cs" />
     <Compile Include="Assets\Scripts\PhotonRoom.cs" />
     <Compile Include="Assets\Scripts\RoomManager.cs" />
     <Compile Include="Assets\Scripts\RoomButton.cs" />
     <Compile Include="Assets\Scripts\PlayerNameInputField.cs" />
-    <Compile Include="Assets\Scripts\BlackChickenManager.cs" />
+    <Compile Include="Assets\Scripts\BrownChickenManager.cs" />
+    <Compile Include="Assets\Scripts\WhiteChickenManager.cs" />
+    <Compile Include="Assets\Scripts\GooseManager.cs" />
+    <Compile Include="Assets\Scripts\TurkeyManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
