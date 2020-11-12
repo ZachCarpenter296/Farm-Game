@@ -8,15 +8,21 @@ public class PlayerGroundCheck : MonoBehaviour
     /// This script checks to see if the farmer is touching the ground. If he is, then he can jump, otherwise he cannot jump
     /// </summary>
     FarmerController farmerController;
+    GooseController gooseController;
+    TurkeyController turkeyController;
+    ChickenController chickenController;
 
     private void Awake()
     {
         farmerController = GetComponentInParent<FarmerController>();
+        gooseController = GetComponentInParent<GooseController>();
+        turkeyController = GetComponentInParent<TurkeyController>();
+        chickenController = GetComponentInParent<ChickenController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == farmerController.gameObject)
+        if (other == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
             return;
 
         farmerController.SetGroundedState(true);
@@ -24,7 +30,7 @@ public class PlayerGroundCheck : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other == farmerController.gameObject)
+        if (other == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
             return;
 
         farmerController.SetGroundedState(false);
@@ -32,7 +38,7 @@ public class PlayerGroundCheck : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other == farmerController.gameObject)
+        if (other == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
             return;
 
         farmerController.SetGroundedState(true);
@@ -40,7 +46,7 @@ public class PlayerGroundCheck : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == farmerController.gameObject)
+        if (collision.gameObject == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
             return;
 
         farmerController.SetGroundedState(true);
@@ -48,7 +54,7 @@ public class PlayerGroundCheck : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject == farmerController.gameObject)
+        if (collision.gameObject == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
             return;
 
         farmerController.SetGroundedState(false);
@@ -56,7 +62,7 @@ public class PlayerGroundCheck : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject == farmerController.gameObject)
+        if (collision.gameObject == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
             return;
 
         farmerController.SetGroundedState(true);
