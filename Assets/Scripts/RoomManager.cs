@@ -59,11 +59,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
             for (int j = PhotonNetwork.PlayerList.Length; j > 0; j--)
             {
                 Debug.Log("Loop! " + j);
-                int i = Random.Range(0, availableCharacters.Count - 1);
-                Debug.Log("Random index " + i);
-                PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
-                availableCharacters[i].Remove(i);
+                //int i = Random.Range(0, availableCharacters.Count - 1);
+                //Debug.Log("Random index " + i);
+                //PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
+                //availableCharacters[i].Remove(i);
             }
+
+            int i = Random.Range(0, availableCharacters.Count - 1);
+            Debug.Log("Random index " + i);
+            PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
+            availableCharacters[i].Remove(i);
         }
     }
 

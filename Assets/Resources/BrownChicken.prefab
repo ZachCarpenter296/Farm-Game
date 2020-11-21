@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 209697281719289737}
   - component: {fileID: 6683005630006583903}
   - component: {fileID: 2484607846393867616}
+  - component: {fileID: 4465929673599945910}
   m_Layer: 0
   m_Name: BrownChicken
   m_TagString: Player
@@ -395,6 +396,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 2484607846393867616}
+  - {fileID: 4465929673599945910}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -463,6 +465,36 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &4465929673599945910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373966505908128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isDead
+  - Type: 4
+    SynchronizeType: 1
+    Name: isEating
+  - Type: 4
+    SynchronizeType: 1
+    Name: isWalking
+  - Type: 4
+    SynchronizeType: 1
+    Name: isRunning
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!1 &1375779115731872
 GameObject:
   m_ObjectHideFlags: 0

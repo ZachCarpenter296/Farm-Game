@@ -637,6 +637,7 @@ GameObject:
   - component: {fileID: 2485486943176023324}
   - component: {fileID: 2957035206424965540}
   - component: {fileID: -5028710129478038950}
+  - component: {fileID: 7958828319232201713}
   m_Layer: 0
   m_Name: Goose
   m_TagString: Player
@@ -702,6 +703,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 7536492183777111452}
+  - {fileID: 7958828319232201713}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -770,6 +772,36 @@ MonoBehaviour:
   smoothTime: 0.15
   powerfill: {fileID: 4757694995735612792}
   healthfill: {fileID: 0}
+--- !u!114 &7958828319232201713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554617369098768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isDead
+  - Type: 4
+    SynchronizeType: 1
+    Name: isEating
+  - Type: 4
+    SynchronizeType: 1
+    Name: isWalking
+  - Type: 4
+    SynchronizeType: 1
+    Name: isRunning
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!1 &1555117870904192
 GameObject:
   m_ObjectHideFlags: 0
