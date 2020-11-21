@@ -59,6 +59,7 @@ public class FarmerController : MonoBehaviour
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
         moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+
     }
 
     //Controls for the farmers jumping
@@ -82,5 +83,11 @@ public class FarmerController : MonoBehaviour
             return;
 
         rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
+    }
+
+    //Switch weapon
+    public void SetWeapon()
+    {
+
     }
 }

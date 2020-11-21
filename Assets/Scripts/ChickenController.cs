@@ -17,10 +17,13 @@ public class ChickenController : MonoBehaviour
     Rigidbody rb;
     PhotonView PV;
 
+    Animator myAnim;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
+        myAnim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -37,8 +40,10 @@ public class ChickenController : MonoBehaviour
         if (!PV.IsMine)
             return;
         Look();
-        Move();
         Jump();
+        Move();
+
+        
     }
 
     //Controls for the farmers camera
@@ -56,9 +61,9 @@ public class ChickenController : MonoBehaviour
     //Controls for the farmers movement
     void Move()
     {
-        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
-        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+         moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);      
     }
 
     //Controls for the farmers jumping
@@ -82,5 +87,17 @@ public class ChickenController : MonoBehaviour
             return;
 
         rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
+
+
+        //check to see if there is movement input from user, if so
+        //set animator boolean isRunning to true
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            myAnim.SetBool("isRunning", true);
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+        {
+            myAnim.SetBool("isRunning", false);
+        }
     }
 }

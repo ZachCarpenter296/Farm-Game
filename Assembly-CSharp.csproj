@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A27A4D69-6D7F-E3AA-3BD3-541E0954E1DC}</ProjectGuid>
+    <ProjectGuid>{1DFEC8F1-F01B-0B86-39EF-E92E293D18E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -52,25 +52,22 @@
     <UnityVersion>2020.1.4f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerGroundCheck.cs" />
     <Compile Include="Assets\Scripts\WhiteChickenManager.cs" />
     <Compile Include="Assets\Scripts\PhotonLobby.cs" />
     <Compile Include="Assets\Scripts\FarmerManager.cs" />
     <Compile Include="Assets\Scripts\FarmerController.cs" />
+    <Compile Include="Assets\Scripts\TurkeyController.cs" />
     <Compile Include="Assets\Scripts\BlackChickenManager.cs" />
     <Compile Include="Assets\Scripts\PhotonRoom.cs" />
     <Compile Include="Assets\Scripts\TurkeyManager.cs" />
     <Compile Include="Assets\Scripts\RoomManager.cs" />
     <Compile Include="Assets\Scripts\BrownChickenManager.cs" />
+    <Compile Include="Assets\Scripts\GooseController.cs" />
     <Compile Include="Assets\Scripts\RoomButton.cs" />
+    <Compile Include="Assets\Scripts\ChickenController.cs" />
     <Compile Include="Assets\Scripts\GooseManager.cs" />
     <Compile Include="Assets\Scripts\PlayerNameInputField.cs" />
-    <Compile Include="Assets\Scripts\ChickenController.cs" />
-    <Compile Include="Assets\Scripts\GooseController.cs" />
-    <Compile Include="Assets\Scripts\TurkeyController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
@@ -276,6 +273,12 @@
     </Reference>
     <Reference Include="websocket-sharp">
       <HintPath>Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.4f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.4f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.4f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -652,35 +655,35 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj">
-      <Project>{5BA1A5E7-7D26-275E-3335-1AD8BF960FF1}</Project>
+      <Project>{D8D33F96-E5FF-8304-EC6E-B6A44783BC74}</Project>
       <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{E1D382CC-5589-4963-F09F-777B8E1F3B41}</Project>
+      <Project>{0C2B51A6-2EE5-B946-2C1D-01AF548ED498}</Project>
       <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonWebSocket.csproj">
-      <Project>{3A75CFF0-F06C-1B8B-152D-9CC2EEF5087A}</Project>
+      <Project>{50D31D82-5575-AC25-301A-B30B7910F315}</Project>
       <Name>PhotonWebSocket</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonRealtime.csproj">
-      <Project>{8A1E06AF-53B2-0B27-ED29-61013CE89070}</Project>
+      <Project>{4AC1D18F-4A3A-66B6-FB16-56E47B848CB7}</Project>
       <Name>PhotonRealtime</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.csproj">
-      <Project>{0F565E3E-5F0F-F576-6DE3-008845A162D4}</Project>
+      <Project>{71ACF810-9854-7F64-B6C9-4E6F6F853885}</Project>
       <Name>PhotonUnityNetworking</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonChat.csproj">
-      <Project>{54F487AC-1939-4142-819A-2F38E4F91563}</Project>
+      <Project>{F738CD1F-C0DB-6DA6-D400-A1DB3ECB7DB0}</Project>
       <Name>PhotonChat</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
-      <Project>{D5EF0B8F-1AB9-5024-62B7-6558AD802053}</Project>
+      <Project>{CB4D884D-CD9D-F968-7482-88C1B81AB33B}</Project>
       <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
-      <Project>{35EC73FF-841A-2A34-6668-66076D24C632}</Project>
+      <Project>{BB2A9981-9B20-0D57-C8CC-32A71A11E0B4}</Project>
       <Name>PhotonUnityNetworking.Editor</Name>
     </ProjectReference>
   </ItemGroup>
