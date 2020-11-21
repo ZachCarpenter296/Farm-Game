@@ -55,7 +55,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             foreach (Player player in PhotonNetwork.PlayerList)
             {
                 int i = Random.Range(0, availableCharacters.Count - 1);
-                Debug.Log("Random index" + i);
+                Debug.Log("Random index " + i);
                 PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
                 availableCharacters[i].Remove(i);
             }

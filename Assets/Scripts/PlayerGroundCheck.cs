@@ -22,49 +22,90 @@ public class PlayerGroundCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
+        if (other.tag == "Player")
             return;
 
-        farmerController.SetGroundedState(true);
+        SetTrue(this.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
+        if (other.tag == "Player")
             return;
 
-        farmerController.SetGroundedState(false);
+        SetFalse(this.gameObject.name);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
+        //if (other == farmerController.gameObject)
+        if (other.tag == "Player")
             return;
 
-        farmerController.SetGroundedState(true);
+        SetTrue(this.gameObject.name);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
+        if (collision.gameObject.tag == "Player")
             return;
 
-        farmerController.SetGroundedState(true);
+        SetTrue(this.gameObject.name);
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
+        if (collision.gameObject.tag == "Player")
             return;
 
-        farmerController.SetGroundedState(false);
+        SetFalse(this.gameObject.name);
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject == farmerController.gameObject || gooseController.gameObject || turkeyController.gameObject || chickenController.gameObject)
+        if (collision.gameObject.tag == "Player")
             return;
 
-        farmerController.SetGroundedState(true);
+        SetTrue(this.gameObject.name);
+    }
+
+    private void SetTrue(string name)
+    {
+        if (name == "GroundCheckFarmer")
+        {
+            farmerController.SetGroundedState(true);
+        }
+        if (name == "GroundCheckGoose")
+        {
+            gooseController.SetGroundedState(true);
+        }
+        if(name == "GroundCheckTurkey")
+        {
+            turkeyController.SetGroundedState(true);
+        }
+        if(name == "GroundCheckChicken")
+        {
+            chickenController.SetGroundedState(true);
+        }
+    }
+
+    private void SetFalse(string name)
+    {
+        if (name == "GroundCheckFarmer")
+        {
+            farmerController.SetGroundedState(false);
+        }
+        if (name == "GroundCheckGoose")
+        {
+            gooseController.SetGroundedState(false);
+        }
+        if (name == "GroundCheckTurkey")
+        {
+            turkeyController.SetGroundedState(false);
+        }
+        if (name == "GroundCheckChicken")
+        {
+            chickenController.SetGroundedState(false);
+        }
     }
 }
