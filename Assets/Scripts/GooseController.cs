@@ -17,10 +17,14 @@ public class GooseController : MonoBehaviour
     Rigidbody rb;
     PhotonView PV;
 
+    Animator myAnimator;
+    bool isWalking = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
+        myAnimator = GetComponentInParent<Animator>();
     }
 
     private void Start()
@@ -56,9 +60,15 @@ public class GooseController : MonoBehaviour
     //Controls for the farmers movement
     void Move()
     {
-        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        //check to see if there's input from the player to move
+       // if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Veritcal") != 0)
 
-        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+            myAnimator.SetBool("isWalking", true);
+
+            Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+
+            moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+
     }
 
     //Controls for the farmers jumping
