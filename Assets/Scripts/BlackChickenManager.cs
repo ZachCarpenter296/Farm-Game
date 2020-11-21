@@ -23,6 +23,8 @@ public class BlackChickenManager : MonoBehaviour
     void CreateController()
     {
         Debug.Log("Instantiated Controller");
+        
         PhotonNetwork.Instantiate("BlackChicken", Vector3.zero, Quaternion.identity);
+
     }
 }
