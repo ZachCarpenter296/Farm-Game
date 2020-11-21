@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: -5028710129478038950}
   m_Layer: 0
   m_Name: Goose
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1469,7 +1469,7 @@ GameObject:
   - component: {fileID: 2380964779355512938}
   - component: {fileID: 6698519990733124619}
   m_Layer: 0
-  m_Name: GroundCheck
+  m_Name: GroundCheckGoose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

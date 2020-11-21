@@ -1070,7 +1070,7 @@ GameObject:
   - component: {fileID: 4350916985132158356}
   m_Layer: 0
   m_Name: Turkey
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1664,7 +1664,7 @@ GameObject:
   - component: {fileID: 2156606257816156754}
   - component: {fileID: 7856396893072192845}
   m_Layer: 0
-  m_Name: GroundCheck
+  m_Name: GroundCheckTurkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

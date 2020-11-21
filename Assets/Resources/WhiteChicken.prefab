@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 4129340227740691887}
   m_Layer: 0
   m_Name: WhiteChicken
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 8730685619278066351}
   - component: {fileID: 5235894348734315729}
   m_Layer: 0
-  m_Name: GroundCheck
+  m_Name: GroundCheckChicken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

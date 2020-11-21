@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 4586646172877189274}
   m_Layer: 0
   m_Name: BlackChicken
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 7812505198391116114}
   - component: {fileID: 6190592179582617538}
   m_Layer: 0
-  m_Name: GroundCheck
+  m_Name: GroundCheckChicken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
