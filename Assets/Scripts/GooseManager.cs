@@ -8,9 +8,13 @@ public class GooseManager : MonoBehaviour
 {
     PhotonView PV;
 
+    //get skeleton transform
+    Transform skeleton;
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
+        skeleton = gameObject.transform.Find("Goose Skeleton");
     }
     void Start()
     {
@@ -23,6 +27,7 @@ public class GooseManager : MonoBehaviour
     void CreateController()
     {
         Debug.Log("Instantiated Controller");
+
         PhotonNetwork.Instantiate("Goose", Vector3.zero, Quaternion.identity);
     }
 }

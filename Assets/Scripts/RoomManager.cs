@@ -13,6 +13,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     //private GameObject farmerPrefab;
     public List<string> availableCharacters;
     public List<string> characters;
+    public List<string> spawnPoints;
 
     private void Awake()
     {
@@ -34,6 +35,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         availableCharacters = new List<string>();
         availableCharacters = characters;
+
+        spawnPoints = new List<string>();
+        
     }
 
     public override void OnEnable()

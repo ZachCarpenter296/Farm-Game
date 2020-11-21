@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\ChickenController.cs" />
     <Compile Include="Assets\Scripts\GooseManager.cs" />
     <Compile Include="Assets\Scripts\PlayerNameInputField.cs" />
+    <Compile Include="Assets\Scripts\FoodManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
