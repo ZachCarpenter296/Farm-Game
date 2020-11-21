@@ -25,19 +25,26 @@ public class RoomManager : MonoBehaviourPunCallbacks
         DontDestroyOnLoad(gameObject);
         Instance = this;
 
+        //Make a master list of all possible characters
         characters = new List<string>();
-        characters.Add("PlayerManager");
+        //characters.Add("PlayerManager");
         characters.Add("BlackChickenManager");
         characters.Add("BrownChickenManager");
         characters.Add("WhiteChickenManager");
         characters.Add("GooseManager");
         characters.Add("TurkeyManager");
 
+        //Make a list of available characters based on the amount of people playing, but making sure there is always a farmer
         availableCharacters = new List<string>();
-        availableCharacters = characters;
+        availableCharacters.Add("PlayerManager");
+        for (int i = PhotonNetwork.PlayerList.Length; i > 1; i--)
+        {
+            int j = Random.Range(0, characters.Count - 1);
+            availableCharacters.Add(characters[j]);
+        }
 
         spawnPoints = new List<string>();
-        
+
     }
 
     public override void OnEnable()
@@ -59,16 +66,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
             for (int j = PhotonNetwork.PlayerList.Length; j > 0; j--)
             {
                 Debug.Log("Loop! " + j);
-                //int i = Random.Range(0, availableCharacters.Count - 1);
-                //Debug.Log("Random index " + i);
-                //PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
-                //availableCharacters[i].Remove(i);
+                int i = Random.Range(0, availableCharacters.Count - 1);
+                Debug.Log("Random index " + i);
+                PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
+                availableCharacters[i].Remove(i);
             }
 
-            int i = Random.Range(0, availableCharacters.Count - 1);
-            Debug.Log("Random index " + i);
-            PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
-            availableCharacters[i].Remove(i);
+            //int k = Random.Range(0, availableCharacters.Count - 1);
+            //Debug.Log("Random index " + k);
+            //PhotonNetwork.Instantiate(availableCharacters[k], Vector3.zero, Quaternion.identity);
+            //availableCharacters[k].Remove(k);
         }
     }
 
