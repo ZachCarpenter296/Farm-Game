@@ -35,7 +35,7 @@ public class FarmerController : MonoBehaviour
     private void Update()
     {
         if (!PV.IsMine)
-            return;
+           return;
         Look();
         Move();
         Jump();

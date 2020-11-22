@@ -64,15 +64,5 @@ public class RoomManager : MonoBehaviourPunCallbacks
                 characters.RemoveAt(i);
             }
         }
-
-        void Start()
-        {
-
-        }
-
-        void Update()
-        {
-
-        }
     }
 }
