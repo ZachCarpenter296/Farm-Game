@@ -9,106 +9,70 @@ using System.Linq;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-  public static RoomManager Instance;
-  //private GameObject farmerPrefab;
-  public List<string> availableCharacters;
-  public List<string> characters;
-  public List<string> spawnPoints;
+    public static RoomManager Instance;
+    //private GameObject farmerPrefab;
+    public List<string> characters;
+    public List<string> spawnPoints;
 
-  private void Awake()
-  {
-    if (Instance)
+    private void Awake()
     {
-      Destroy(gameObject);
-      return;
-    }
-    DontDestroyOnLoad(gameObject);
-    Instance = this;
-
-    //Make a master list of all possible characters
-    characters = new List<string>();
-    //characters.Add("PlayerManager");
-    characters.Add("BlackChickenManager");
-    characters.Add("BrownChickenManager");
-    characters.Add("WhiteChickenManager");
-    characters.Add("GooseManager");
-    characters.Add("TurkeyManager");
-
-    //Make a list of available characters based on the amount of people playing, but making sure there is always a farmer
-    availableCharacters = new List<string>();
-    availableCharacters.Add("PlayerManager");
-    for (int i = PhotonNetwork.PlayerList.Length; i > 1; i--)
-    {
-      int j = Random.Range(0, characters.Count - 1);
-      availableCharacters.Add(characters[j]);
-    }
-
-    spawnPoints = new List<string>();
-
-  }
-
-  public override void OnEnable()
-  {
-    base.OnEnable();
-    SceneManager.sceneLoaded += OnSceneLoaded;
-  }
-
-  public override void OnDisable()
-  {
-    base.OnDisable();
-    SceneManager.sceneLoaded -= OnSceneLoaded;
-  }
-
-  void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
-  {
-    if (PhotonNetwork.IsMasterClient)
-    {
-      Debug.Log("Is master client");
-    }
-    if (scene.buildIndex == 1 && PhotonNetwork.IsMasterClient) //We're in the game
-    {
-      Player[] currentPlayerList = PhotonNetwork.PlayerList;
-      for (int j = currentPlayerList.Length - 1; j >= 0; j--)
-      {
-        // Create a new player from the list
-        Debug.Log("Loop! " + j);
-        int i = Random.Range(0, availableCharacters.Count - 1);
-        Debug.Log("Random index " + i);
-        GameObject newPlayer = PhotonNetwork.Instantiate(availableCharacters[i], Vector3.zero, Quaternion.identity);
-        availableCharacters[i].Remove(i);
-
-        // Give players 2+ away to other clients
-        if (j != 0)
+        if (Instance)
         {
-          this.photonView.RPC("acquireController", RpcTarget.Others, j, newPlayer);
-          // newPlayer.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.PlayerList[j]);
+            Destroy(gameObject);
+            return;
         }
-      }
+        DontDestroyOnLoad(gameObject);
+        Instance = this;
 
-      //int k = Random.Range(0, availableCharacters.Count - 1);
-      //Debug.Log("Random index " + k);
-      //PhotonNetwork.Instantiate(availableCharacters[k], Vector3.zero, Quaternion.identity);
-      //availableCharacters[k].Remove(k);
+        //Make a master list of all possible characters
+        characters = new List<string>();
+        characters.Add("BlackChickenManager");
+        characters.Add("BrownChickenManager");
+        characters.Add("WhiteChickenManager");
+        characters.Add("GooseManager");
+        characters.Add("TurkeyManager");
+
+        spawnPoints = new List<string>();
+
     }
-  }
 
-  [PunRPC]
-  public void acquireController(int controllerIndex, GameObject newPlayer)
-  {
-    // If we're the player in question
-    if (PhotonNetwork.PlayerList[controllerIndex].UserId == PhotonNetwork.LocalPlayer.UserId)
+    public override void OnEnable()
     {
-      newPlayer.GetComponent<PhotonView>().RequestOwnership();
+        base.OnEnable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-  }
 
-  void Start()
-  {
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-  }
+    void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (scene.buildIndex == 1) //We're in the game
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.Instantiate("PlayerManager", Vector3.zero, Quaternion.identity);
+            }
+            else
+            {
+                int i = Random.Range(0, characters.Count - 1);
+                Debug.Log("Random index " + i);
+                PhotonNetwork.Instantiate(characters[i], Vector3.zero, Quaternion.identity);
+                characters.RemoveAt(i);
+            }
+        }
 
-  void Update()
-  {
+        void Start()
+        {
 
-  }
+        }
+
+        void Update()
+        {
+
+        }
+    }
 }
