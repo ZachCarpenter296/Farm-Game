@@ -61,6 +61,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
   void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
   {
+    if (PhotonNetwork.IsMasterClient)
+    {
+      Debug.Log("Is master client");
+    }
     if (scene.buildIndex == 1 && PhotonNetwork.IsMasterClient) //We're in the game
     {
       Player[] currentPlayerList = PhotonNetwork.PlayerList;
@@ -76,8 +80,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         // Give players 2+ away to other clients
         if (j != 0)
         {
-          // this.photonView.RPC("acquireController", RpcTarget.Others, j, newPlayer);
-          newPlayer.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.PlayerList[j]);
+          this.photonView.RPC("acquireController", RpcTarget.Others, j, newPlayer);
+          // newPlayer.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.PlayerList[j]);
         }
       }
 
@@ -88,16 +92,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     }
   }
 
-  /* [PunRPC]
+  [PunRPC]
   public void acquireController(int controllerIndex, GameObject newPlayer)
   {
     // If we're the player in question
     if (PhotonNetwork.PlayerList[controllerIndex].UserId == PhotonNetwork.LocalPlayer.UserId)
     {
       newPlayer.GetComponent<PhotonView>().RequestOwnership();
-      newPlayer.GetComponent<PhotonView>().TransferOwnership()
-        }
-  } */
+    }
+  }
 
   void Start()
   {
