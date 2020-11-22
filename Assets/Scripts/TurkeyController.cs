@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurkeyController : MonoBehaviour
 {
     [SerializeField] GameObject cameraHolder;
 
     [SerializeField] float mouseSensitivity, walkSpeed, sprintSpeed, jumpForce, smoothTime;
+
+    [SerializeField] Image powerfill, healthfill;
 
     float verticalLookRotation;
     bool grounded;
@@ -17,10 +20,14 @@ public class TurkeyController : MonoBehaviour
     Rigidbody rb;
     PhotonView PV;
 
+    Animator myAnim;
+    float timer;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
+        myAnim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -30,6 +37,14 @@ public class TurkeyController : MonoBehaviour
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
         }
+        else
+        {
+            //reset power bar and reset health 
+            Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
+
+            powerfill.rectTransform.transform.localScale = resetPower;
+            Debug.LogWarning(powerfill.rectTransform.transform.localScale.x + " x value");
+        }
     }
 
     private void Update()
@@ -37,8 +52,91 @@ public class TurkeyController : MonoBehaviour
         if (!PV.IsMine)
             return;
         Look();
-        Move();
         Jump();
+        Move();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!PV.IsMine)
+            return;
+        if (other.tag == "Food")
+        {
+            //reset timer
+            timer = 0.0f;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!PV.IsMine)
+            return;
+        if (other.tag == "Food")
+        {
+            //Debug.Log("About to eat food");
+
+            Eat(other);
+        }
+    }
+
+    void Eat(Collider food)
+    {
+        if (!PV.IsMine)
+            return;
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            myAnim.SetBool("isEating", true);
+        }
+
+        if (Input.GetKey(KeyCode.F))
+        {
+            Debug.Log("EATING");
+            //Debug.Log(timer);
+
+            timer += Time.deltaTime;
+
+            if (timer >= 1.99f && timer <= 2.01f)
+            {
+                //Debug.Log("ATE CABBAGE 1");
+                //Update the power bar
+                Vector2 currentSize = powerfill.rectTransform.transform.localScale;
+                Vector2 power = new Vector2(0.1f, 0);
+                powerfill.rectTransform.transform.localScale = currentSize + power;
+
+                GameObject lettuce = food.gameObject.transform.Find("Lettuce2").gameObject;
+
+                Destroy(lettuce);
+            }
+            else if (timer >= 3.99f && timer <= 4.01f)
+            {
+                //Debug.Log("ATE CABBAGE 2");
+                //Update the power bar
+                Vector2 currentSize = powerfill.rectTransform.transform.localScale;
+                Vector2 power = new Vector2(0.1f, 0);
+                powerfill.rectTransform.transform.localScale = currentSize + power;
+
+                GameObject lettuce = food.gameObject.transform.Find("Lettuce4").gameObject;
+
+                Destroy(lettuce);
+            }
+            else if (timer >= 5.99f && timer <= 6.01f)
+            {
+                //Debug.Log("ATE CABBAGE 3");
+                //Update the power bar
+                Vector2 currentSize = powerfill.rectTransform.transform.localScale;
+                Vector2 power = new Vector2(0.1f, 0);
+                powerfill.rectTransform.transform.localScale = currentSize + power;
+
+                GameObject lettuce = food.gameObject.transform.Find("Lettuce6").gameObject;
+
+                Destroy(lettuce);
+                Debug.Log(currentSize);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            myAnim.SetBool("isEating", false);
+        }
     }
 
     //Controls for the farmers camera
@@ -82,5 +180,16 @@ public class TurkeyController : MonoBehaviour
             return;
 
         rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
+
+        //check to see if there is movement input from user, if so
+        //set animator boolean isRunning to true
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            myAnim.SetBool("isRunning", true);
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+        {
+            myAnim.SetBool("isRunning", false);
+        }
     }
 }

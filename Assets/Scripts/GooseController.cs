@@ -27,7 +27,7 @@ public class GooseController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
-        myAnim = GetComponentInParent<Animator>();
+        myAnim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -37,11 +37,14 @@ public class GooseController : MonoBehaviour
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
         }
+        else
+        {
+            //reset power bar and reset health 
+            Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
 
-        //reset power bar and reset health 
-        Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
-
-        powerfill.rectTransform.transform.localScale = resetPower;
+            powerfill.rectTransform.transform.localScale = resetPower;
+            Debug.LogWarning(powerfill.rectTransform.transform.localScale.x + " x value");
+        }
     }
 
     private void Update()
@@ -49,12 +52,14 @@ public class GooseController : MonoBehaviour
         if (!PV.IsMine)
             return;
         Look();
-        Move();
         Jump();
+        Move();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!PV.IsMine)
+            return;
         if (other.tag == "Food")
         {
             //reset timer
@@ -64,6 +69,8 @@ public class GooseController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (!PV.IsMine)
+            return;
         if (other.tag == "Food")
         {
             //Debug.Log("About to eat food");
@@ -72,9 +79,10 @@ public class GooseController : MonoBehaviour
         }
     }
 
-
     void Eat(Collider food)
     {
+        if (!PV.IsMine)
+            return;
         if (Input.GetKeyDown(KeyCode.F))
         {
             myAnim.SetBool("isEating", true);
@@ -113,7 +121,7 @@ public class GooseController : MonoBehaviour
             }
             else if (timer >= 5.99f && timer <= 6.01f)
             {
-               // Debug.Log("ATE CABBAGE 3");
+                //Debug.Log("ATE CABBAGE 3");
                 //Update the power bar
                 Vector2 currentSize = powerfill.rectTransform.transform.localScale;
                 Vector2 power = new Vector2(0.1f, 0);
@@ -122,6 +130,7 @@ public class GooseController : MonoBehaviour
                 GameObject lettuce = food.gameObject.transform.Find("Lettuce6").gameObject;
 
                 Destroy(lettuce);
+                Debug.Log(currentSize);
             }
         }
         if (Input.GetKeyUp(KeyCode.F))
@@ -145,14 +154,9 @@ public class GooseController : MonoBehaviour
     //Controls for the farmers movement
     void Move()
     {
-        //check to see if there's input from the player to move
-       // if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Veritcal") != 0)
+        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
-
-            Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-
-            moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
-
+        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
     }
 
     //Controls for the farmers jumping

@@ -1332,8 +1332,8 @@ MonoBehaviour:
   sprintSpeed: 10
   jumpForce: 200
   smoothTime: 0.15
-  powerfill: {fileID: 0}
-  healthfill: {fileID: 0}
+  powerfill: {fileID: 3066737065607808810}
+  healthfill: {fileID: 9058201742520842440}
 --- !u!114 &4139036486725743872
 MonoBehaviour:
   m_ObjectHideFlags: 0
