@@ -12,6 +12,8 @@ public class GooseController : MonoBehaviour
 
     [SerializeField] Image powerfill, healthfill;
 
+    [SerializeField] GameObject playerUI;
+
     float verticalLookRotation;
     bool grounded;
     Vector3 smoothMoveVelocity;
@@ -37,11 +39,17 @@ public class GooseController : MonoBehaviour
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
         }
+        else
+        {
 
-        //reset power bar and reset health 
-        Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
+            GameObject myUI = Instantiate(playerUI);
+            myUI.transform.SetParent(this.transform, true);
+
+            //reset power bar and reset health 
+            Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
 
         powerfill.rectTransform.transform.localScale = resetPower;
+        }
     }
 
     private void Update()

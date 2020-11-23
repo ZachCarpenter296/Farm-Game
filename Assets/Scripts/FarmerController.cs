@@ -33,6 +33,10 @@ public class FarmerController : MonoBehaviour
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
         }
+        else
+        {
+            
+        }
     }
 
     private void Update()
