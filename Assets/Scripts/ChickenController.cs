@@ -26,8 +26,9 @@ public class ChickenController : MonoBehaviour
   float timer;
 
   EnergyHealth myEnergyHealth;
-  Image health;
-  Image energy;
+  Image healthBar;
+  Image energyBar;
+
 
   private void Awake()
   {
@@ -45,22 +46,28 @@ public class ChickenController : MonoBehaviour
     }
     else
     {
-      GameObject myUI = Instantiate(playerUI);
-      myUI.transform.SetParent(this.transform, true);
+      if (!PV.IsMine)
+      {
+        Destroy(GetComponentInChildren<Camera>().gameObject);
+        Destroy(rb);
+      }
+      else
+      {
+        GameObject myUI = Instantiate(playerUI);
+        myUI.transform.SetParent(this.transform, true);
 
-      //reset power bar and reset health 
-      Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
+        myEnergyHealth = this.GetComponentInChildren<EnergyHealth>();
+        healthBar = myEnergyHealth.health;
+        energyBar = myEnergyHealth.energy;
 
-      powerfill.rectTransform.transform.localScale = resetPower;
+        Debug.Log(healthBar.rectTransform.transform.localScale.x);
 
-      //myEnergyHealth = myUI.GetComponent<EnergyHealth>();
-      //Image bar = myUI.GetComponentInChildren<Image>(0);
+        //reset power bar and reset health 
+        Vector2 resetPower = new Vector2(0f, energyBar.rectTransform.transform.localScale.y);
 
-      //reset power bar and reset health 
-      //Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
-
-      //powerfill.rectTransform.transform.localScale = resetPower;
-      //Debug.LogWarning(powerfill.rectTransform.transform.localScale.x + " x value");
+        energyBar.rectTransform.transform.localScale = resetPower;
+        //Debug.LogWarning(powerfill.rectTransform.transform.localScale.x + " x value");
+      }
     }
   }
 
@@ -149,11 +156,19 @@ public class ChickenController : MonoBehaviour
     {
       myAnim.SetBool("isEating", false);
     }
+
   }
 
-  void TakeDamage(float damage)
+  public void TakeDamage(float damage)
   {
-    Debug.Log("Taking damage");
+    Debug.Log("Taking hits");
+
+    Vector2 currentHealth = healthBar.rectTransform.transform.localScale;
+    Vector2 newHealth = new Vector2(damage, 0f);
+
+    healthBar.rectTransform.transform.localScale = currentHealth - newHealth;
+
+    Debug.Log(healthBar.rectTransform.transform.localScale.x);
   }
 
   //Controls for the farmers camera
