@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 11222824550720165}
   - component: {fileID: 5171757006734776566}
   - component: {fileID: 5758089228781435689}
+  - component: {fileID: -6806416076540016622}
   m_Layer: 0
   m_Name: MyBlackChicken
   m_TagString: Untagged
@@ -611,6 +612,8 @@ MonoBehaviour:
   sprintSpeed: 10
   jumpForce: 200
   smoothTime: 0.15
+  powerfill: {fileID: 0}
+  healthfill: {fileID: 0}
 --- !u!54 &11222824550720165
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -656,6 +659,14 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!81 &-6806416076540016622
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091161100428284669}
+  m_Enabled: 1
 --- !u!1 &8091179646190151485
 GameObject:
   m_ObjectHideFlags: 0

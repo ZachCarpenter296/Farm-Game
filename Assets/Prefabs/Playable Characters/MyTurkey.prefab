@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 7796807343187358221}
   - component: {fileID: 4860476835309577274}
   - component: {fileID: 525674211850528392}
+  - component: {fileID: 3620270463711012495}
   m_Layer: 0
   m_Name: MyTurkey
   m_TagString: Untagged
@@ -365,6 +366,14 @@ MonoBehaviour:
   sprintSpeed: 10
   jumpForce: 200
   smoothTime: 0.15
+--- !u!81 &3620270463711012495
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263875989328684656}
+  m_Enabled: 1
 --- !u!1 &4263932178177131350
 GameObject:
   m_ObjectHideFlags: 0
