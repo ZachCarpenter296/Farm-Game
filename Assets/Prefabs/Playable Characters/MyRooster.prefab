@@ -412,6 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1605829095578564184}
   - component: {fileID: 1660664795868588790}
+  - component: {fileID: 9036182165744006105}
   m_Layer: 0
   m_Name: MyRooster
   m_TagString: Untagged
@@ -454,6 +455,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!81 &9036182165744006105
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611353558467608062}
+  m_Enabled: 1
 --- !u!1 &1611403023554822108
 GameObject:
   m_ObjectHideFlags: 0
