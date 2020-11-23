@@ -1332,7 +1332,6 @@ MonoBehaviour:
   jumpForce: 200
   smoothTime: 0.15
   powerfill: {fileID: 0}
-  healthfill: {fileID: 0}
   playerUI: {fileID: 5745654832296669487, guid: f681c0b575569924aa79f7807699423f, type: 3}
 --- !u!114 &4139036486725743872
 MonoBehaviour:
