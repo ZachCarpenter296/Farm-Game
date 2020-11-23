@@ -12,6 +12,8 @@ public class ChickenController : MonoBehaviour
 
     [SerializeField] Image powerfill, healthfill;
 
+    [SerializeField] GameObject playerUI;
+
     float verticalLookRotation;
     bool grounded;
     Vector3 smoothMoveVelocity;
@@ -39,11 +41,14 @@ public class ChickenController : MonoBehaviour
         }
         else
         {
-            //reset power bar and reset health 
-            Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
+            GameObject myUI = Instantiate(playerUI);
+            myUI.transform.SetParent(this.transform, true);
 
-            powerfill.rectTransform.transform.localScale = resetPower;
-            Debug.LogWarning(powerfill.rectTransform.transform.localScale.x + " x value");
+            //reset power bar and reset health 
+            //Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
+
+            //powerfill.rectTransform.transform.localScale = resetPower;
+            //Debug.LogWarning(powerfill.rectTransform.transform.localScale.x + " x value");
         }
     }
 

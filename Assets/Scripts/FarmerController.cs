@@ -9,6 +9,8 @@ public class FarmerController : MonoBehaviour
 
     [SerializeField] float mouseSensitivity, walkSpeed, sprintSpeed, jumpForce, smoothTime;
 
+    [SerializeField] GameObject farmerUI;
+
     float verticalLookRotation;
     bool grounded;
     Vector3 smoothMoveVelocity;
@@ -29,6 +31,11 @@ public class FarmerController : MonoBehaviour
         {
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
+        }
+        else
+        {
+            GameObject myUI = Instantiate(farmerUI);
+            myUI.transform.SetParent(this.transform, true);
         }
     }
 
