@@ -23,6 +23,7 @@ public class ChickenController : MonoBehaviour
     Animator myAnim;
     float timer;
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,14 +38,11 @@ public class ChickenController : MonoBehaviour
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
         }
-        else
-        {
-            //reset power bar and reset health 
-            Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
 
-            powerfill.rectTransform.transform.localScale = resetPower;
-            Debug.LogWarning(powerfill.rectTransform.transform.localScale.x + " x value");
-        }
+        //reset power bar and reset health 
+        Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
+
+        powerfill.rectTransform.transform.localScale = resetPower;
     }
 
     private void Update()
@@ -54,13 +52,13 @@ public class ChickenController : MonoBehaviour
         Look();
         Jump();
         Move();
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!PV.IsMine)
-            return;
-        if (other.tag == "Food")
+        if(other.tag == "Food")
         {
             //reset timer
             timer = 0.0f;
@@ -69,9 +67,7 @@ public class ChickenController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (!PV.IsMine)
-            return;
-        if (other.tag == "Food")
+        if(other.tag == "Food")
         {
             //Debug.Log("About to eat food");
 
@@ -81,8 +77,6 @@ public class ChickenController : MonoBehaviour
 
     void Eat(Collider food)
     {
-        if (!PV.IsMine)
-            return;
         if (Input.GetKeyDown(KeyCode.F))
         {
             myAnim.SetBool("isEating", true);
@@ -130,7 +124,6 @@ public class ChickenController : MonoBehaviour
                 GameObject lettuce = food.gameObject.transform.Find("Lettuce6").gameObject;
 
                 Destroy(lettuce);
-                Debug.Log(currentSize);
             }
         }
         if (Input.GetKeyUp(KeyCode.F))
@@ -138,6 +131,7 @@ public class ChickenController : MonoBehaviour
             myAnim.SetBool("isEating", false);
         }
     }
+
 
     //Controls for the farmers camera
     void Look()
@@ -180,6 +174,7 @@ public class ChickenController : MonoBehaviour
             return;
 
         rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
+
 
         //check to see if there is movement input from user, if so
         //set animator boolean isRunning to true

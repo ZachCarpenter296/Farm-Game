@@ -60,8 +60,6 @@ public class FarmerController : MonoBehaviour
 
         moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
 
-        //footsteps
-        //source.Play();
     }
 
     //Controls for the farmers jumping
