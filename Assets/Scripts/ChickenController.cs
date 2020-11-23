@@ -10,7 +10,7 @@ public class ChickenController : MonoBehaviour
 
     [SerializeField] float mouseSensitivity, walkSpeed, sprintSpeed, jumpForce, smoothTime;
 
-    [SerializeField] Image powerfill, healthfill;
+    [SerializeField] Image powerfill;
 
     [SerializeField] GameObject playerUI;
 
@@ -24,6 +24,10 @@ public class ChickenController : MonoBehaviour
 
     Animator myAnim;
     float timer;
+
+    EnergyHealth myEnergyHealth;
+    Image health;
+    Image energy;
 
     private void Awake()
     {
@@ -43,6 +47,9 @@ public class ChickenController : MonoBehaviour
         {
             GameObject myUI = Instantiate(playerUI);
             myUI.transform.SetParent(this.transform, true);
+
+            //myEnergyHealth = myUI.GetComponent<EnergyHealth>();
+            //Image bar = myUI.GetComponentInChildren<Image>(0);
 
             //reset power bar and reset health 
             //Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
@@ -142,6 +149,11 @@ public class ChickenController : MonoBehaviour
         {
             myAnim.SetBool("isEating", false);
         }
+    }
+
+    void TakeDamage(float damage)
+    {
+        Debug.Log("Taking damage");
     }
 
     //Controls for the farmers camera

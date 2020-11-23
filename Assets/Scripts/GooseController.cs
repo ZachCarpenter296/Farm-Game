@@ -12,6 +12,8 @@ public class GooseController : MonoBehaviour
 
     [SerializeField] Image powerfill, healthfill;
 
+    [SerializeField] GameObject playerUI;
+
     float verticalLookRotation;
     bool grounded;
     Vector3 smoothMoveVelocity;
@@ -39,6 +41,10 @@ public class GooseController : MonoBehaviour
         }
         else
         {
+
+            GameObject myUI = Instantiate(playerUI);
+            myUI.transform.SetParent(this.transform, true);
+
             //reset power bar and reset health 
             Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
 
