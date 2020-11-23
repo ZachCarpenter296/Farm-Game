@@ -26,8 +26,9 @@ public class ChickenController : MonoBehaviour
     float timer;
 
     EnergyHealth myEnergyHealth;
-    Image health;
-    Image energy;
+    Image healthBar;
+    Image energyBar;
+
 
     private void Awake()
     {
@@ -48,13 +49,16 @@ public class ChickenController : MonoBehaviour
             GameObject myUI = Instantiate(playerUI);
             myUI.transform.SetParent(this.transform, true);
 
-            //myEnergyHealth = myUI.GetComponent<EnergyHealth>();
-            //Image bar = myUI.GetComponentInChildren<Image>(0);
+            myEnergyHealth = this.GetComponentInChildren<EnergyHealth>();
+            healthBar = myEnergyHealth.health;
+            energyBar = myEnergyHealth.energy;
+
+            Debug.Log(healthBar.rectTransform.transform.localScale.x);
 
             //reset power bar and reset health 
-            //Vector2 resetPower = new Vector2(0f, powerfill.rectTransform.transform.localScale.y);
+            Vector2 resetPower = new Vector2(0f, energyBar.rectTransform.transform.localScale.y);
 
-            //powerfill.rectTransform.transform.localScale = resetPower;
+            energyBar.rectTransform.transform.localScale = resetPower;
             //Debug.LogWarning(powerfill.rectTransform.transform.localScale.x + " x value");
         }
     }
@@ -151,9 +155,16 @@ public class ChickenController : MonoBehaviour
         }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
-        Debug.Log("Taking damage");
+        Debug.Log("Taking hits");
+
+        Vector2 currentHealth = healthBar.rectTransform.transform.localScale;
+        Vector2 newHealth = new Vector2(damage, 0f);
+
+        healthBar.rectTransform.transform.localScale = currentHealth - newHealth;
+
+        Debug.Log(healthBar.rectTransform.transform.localScale.x);
     }
 
     //Controls for the farmers camera
