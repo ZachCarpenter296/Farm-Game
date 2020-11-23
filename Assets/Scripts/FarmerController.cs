@@ -17,10 +17,13 @@ public class FarmerController : MonoBehaviour
     Rigidbody rb;
     PhotonView PV;
 
+    AudioSource source;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
+        source = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -61,7 +64,7 @@ public class FarmerController : MonoBehaviour
         moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
 
         //footsteps
-        //source.Play();
+        source.Play();
     }
 
     //Controls for the farmers jumping
