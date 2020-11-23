@@ -43,8 +43,6 @@ public class ChickenController : MonoBehaviour
       Destroy(GetComponentInChildren<Camera>().gameObject);
       Destroy(rb);
     }
-
-
     else
     {
       GameObject myUI = Instantiate(playerUI);
